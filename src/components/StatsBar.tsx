@@ -47,7 +47,13 @@ const stats = [
   },
 ];
 
-export default function StatsBar() {
+export default function StatsBar({ downloads = "1.2k+", version = "v1.0.1" }: { downloads?: string, version?: string }) {
+  const displayStats = stats.map(s => {
+    if (s.label === "Downloads") return { ...s, value: downloads };
+    if (s.label === "Latest") return { ...s, value: version };
+    return s;
+  });
+
   return (
     <section
       className="relative z-10 py-10"
@@ -61,7 +67,7 @@ export default function StatsBar() {
 
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, i) => (
+          {displayStats.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 15 }}
