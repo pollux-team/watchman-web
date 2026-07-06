@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import statsData from "../data/stats.json";
 
 const stats = [
   {
@@ -21,7 +22,7 @@ const stats = [
         <line x1="12" y1="15" x2="12" y2="3" />
       </svg>
     ),
-    value: "1.2k+",
+    value: "1,240",
     label: "Downloads",
   },
   {
@@ -42,15 +43,15 @@ const stats = [
         <line x1="17.5" y1="15" x2="9" y2="15" />
       </svg>
     ),
-    value: "v1.0.1",
+    value: "v1.0.5",
     label: "Latest",
   },
 ];
 
-export default function StatsBar({ downloads = "1.2k+", version = "v1.0.1" }: { downloads?: string, version?: string }) {
+export default function StatsBar() {
   const displayStats = stats.map(s => {
-    if (s.label === "Downloads") return { ...s, value: downloads };
-    if (s.label === "Latest") return { ...s, value: version };
+    if (s.label === "Downloads") return { ...s, value: statsData.downloads || "1,240" };
+    if (s.label === "Latest") return { ...s, value: statsData.version || "v1.0.5" };
     return s;
   });
 

@@ -15,6 +15,8 @@
     "tailwindcss": "^3.4.19"
   },
   "scripts": {
+    "prebuild": "node scripts/fetch-stats.js",
+    "predev": "node scripts/fetch-stats.js",
     "build": "opennextjs-cloudflare build",
     "dev": "next dev",
     "start": "next start",
