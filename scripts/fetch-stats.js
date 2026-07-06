@@ -17,7 +17,7 @@ async function fetchStats() {
     }
 
     const releases = await res.json();
-    let totalDownloads = 1240; // Base count
+    let totalDownloads = 1000; // Base count for unofficial downloads
     
     for (const release of releases) {
       if (release.assets) {
@@ -32,7 +32,7 @@ async function fetchStats() {
       version = releases[0].tag_name;
     }
     
-    const downloads = totalDownloads > 1240 ? totalDownloads.toLocaleString() : "1,240";
+    const downloads = totalDownloads > 1000 ? totalDownloads.toLocaleString() : "1,000";
 
     const data = {
       downloads,
