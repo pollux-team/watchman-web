@@ -14,10 +14,13 @@ async function getGithubStats() {
         Accept: "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
       },
-      next: { revalidate: 3600 },
+      next: { revalidate: 60 }, // Check GitHub every 1 minute for new downloads
     });
 
-    if (!res.ok) throw new Error("Failed to fetch");
+    if (!res.ok) {
+      console.error("Fetch failed with status:", res.status);
+      throw new Error("Failed to fetch");
+    }
 
     const releases = await res.json();
     let totalDownloads = 1240; // Base count for unofficial downloads
