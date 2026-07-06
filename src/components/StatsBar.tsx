@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const stats = [
@@ -21,7 +22,7 @@ const stats = [
         <line x1="12" y1="15" x2="12" y2="3" />
       </svg>
     ),
-    value: "1.2k+",
+    value: "1,240",
     label: "Downloads",
   },
   {
@@ -42,12 +43,45 @@ const stats = [
         <line x1="17.5" y1="15" x2="9" y2="15" />
       </svg>
     ),
-    value: "v1.0.1",
+    value: "v1.0.5",
     label: "Latest",
   },
 ];
 
-export default function StatsBar({ downloads = "1.2k+", version = "v1.0.1" }: { downloads?: string, version?: string }) {
+export default function StatsBar() {
+  const [downloads, setDownloads] = useState("1,240");
+  const [version, setVersion] = useState("v1.0.5");
+
+  useEffect(() => {
+    async function fetchStats() {
+      try {
+        const res = await fetch("https://api.github.com/repos/rayhan138/Watchman/releases");
+        if (!res.ok) return;
+
+        const releases = await res.json();
+        let totalDownloads = 1240; // Base count
+        for (const release of releases) {
+          if (release.assets) {
+            for (const asset of release.assets) {
+              totalDownloads += asset.download_count;
+            }
+          }
+        }
+        
+        if (totalDownloads > 1240) {
+          setDownloads(totalDownloads.toLocaleString());
+        }
+        if (releases.length > 0) {
+          setVersion(releases[0].tag_name);
+        }
+      } catch (error) {
+        console.error("Error fetching GitHub stats:", error);
+      }
+    }
+    
+    fetchStats();
+  }, []);
+
   const displayStats = stats.map(s => {
     if (s.label === "Downloads") return { ...s, value: downloads };
     if (s.label === "Latest") return { ...s, value: version };
