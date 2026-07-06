@@ -35,7 +35,7 @@ async function getGithubStats() {
     return { version, downloads };
   } catch (error) {
     console.error("Error fetching GitHub stats:", error);
-    return { version: "v1.0.5", downloads: "1.2k+" };
+    return { version: "v1.0.5", downloads: "1,240" };
   }
 }
 
