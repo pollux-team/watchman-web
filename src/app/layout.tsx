@@ -45,6 +45,15 @@ export default function RootLayout({
     <html lang="en" className={`${play.variable} ${inter.variable} ${nunitoSans.variable} ${jetbrainsMono.variable}`}>
       <head>
         <meta property="og:logo" content="https://watchman.blinkeye.app/watchman-logo.svg" />
+        {/* Google Tag Manager (Google tag) — container GTM-MVLTGM32 */}
+        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MVLTGM32" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -58,7 +67,18 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {/* Google Tag Manager (noscript) — GTM-MVLTGM32 */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MVLTGM32"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
