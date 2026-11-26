@@ -219,7 +219,7 @@ export default function PreferencesMockup() {
 
             {/* Footer */}
             <div className="flex flex-col gap-[12px]">
-              <div className="text-[10px] font-[700] text-[#6b7280]">Watchman v1.0.1</div>
+              <div className="text-[10px] font-[700] text-[#6b7280]">Watchman v2.0.2</div>
               
               <div className="flex items-center gap-[12px]">
                 <button className="h-[42px] px-[20px] bg-[#1d4ed8] hover:bg-[#1e40af] text-white text-[10px] font-[800] rounded-[21px] transition-colors border-none flex items-center justify-center text-center shadow-sm whitespace-nowrap tracking-[0.5px]">

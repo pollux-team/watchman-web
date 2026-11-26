@@ -42,7 +42,7 @@ const stats = [
         <line x1="17.5" y1="15" x2="9" y2="15" />
       </svg>
     ),
-    value: "v1.0.1",
+    value: "v2.0.2",
     label: "Latest",
   },
 ];
