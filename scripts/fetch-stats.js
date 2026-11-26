@@ -27,7 +27,7 @@ async function fetchStats() {
       }
     }
 
-    let version = "v1.0.5";
+    let version = "v2.0.2";
     if (releases.length > 0) {
       version = releases[0].tag_name;
     }

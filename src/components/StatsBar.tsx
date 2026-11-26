@@ -43,7 +43,7 @@ const stats = [
         <line x1="17.5" y1="15" x2="9" y2="15" />
       </svg>
     ),
-    value: "v1.0.5",
+    value: "v2.0.2",
     label: "Latest",
   },
 ];
@@ -51,7 +51,7 @@ const stats = [
 export default function StatsBar() {
   const displayStats = stats.map(s => {
     if (s.label === "Downloads") return { ...s, value: statsData.downloads || "1,240" };
-    if (s.label === "Latest") return { ...s, value: statsData.version || "v1.0.5" };
+    if (s.label === "Latest") return { ...s, value: statsData.version || "v2.0.2" };
     return s;
   });
 
